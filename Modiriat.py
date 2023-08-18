@@ -1,4 +1,4 @@
-from Rcode import Client, Message, handlers, methods
+from rubpy import Client, Message, handlers, methods
 from asyncio import run
 from config import *
 import requests
@@ -153,6 +153,7 @@ async def main():
     async with Client(session="bot") as client:
         @client.on(handlers.MessageUpdates())
         async def updates(message: Message): 
+            print(message.raw_text)
             global start_bot, warnings, text_wbw, zed_link, num_warn, look_gif, serch,tebchi, look_video, look_image, look_poll, look_fosh, look_music, look_file, look_live, look_location, look_hard, list_skot, look_voice, look_jock, look_danestani, look_bio, look_time, look_gpt
             msg = message.message_id
             req = message.author_guid
@@ -1014,7 +1015,9 @@ async def main():
                         await client.send_message(my_group,"کاربر عزیز شما به علت اراسال لینک اخراج میشوید.",reply_to_message_id=msg)
                         print('Delete A Link.')
             if locks.locks["حالت فروارد"] == False:
-                if not message.author_guid in admins and 'forwarded_from' in message.to_dict().get('message').keys():
+                print("foll")
+                if 'forwarded_from' in message.to_dict().get('message').keys():
+                    await client.send_message(my_group,"کاربر عزیز شما به علت اراسال فروارد اخراج میشوید.",reply_to_message_id=msg)
                     await message.delete_messages()
                     print('Delete A forwarded.')
                     
