@@ -1,0 +1,8 @@
+rubpy==6.2.5
+openai
+Pillow
+googletrans==4.0.0-rc1
+pyshorteners
+beautifulsoup4
+markdown2
+requests
