@@ -1,4 +1,4 @@
-from rubpy import Client, Message, handlers, methods
+from Rcode import Client, Message, handlers, methods
 from asyncio import run
 from config import *
 import requests
@@ -153,7 +153,6 @@ async def main():
     async with Client(session="bot") as client:
         @client.on(handlers.MessageUpdates())
         async def updates(message: Message): 
-            print(message.raw_text)
             global start_bot, warnings, text_wbw, zed_link, num_warn, look_gif, serch,tebchi, look_video, look_image, look_poll, look_fosh, look_music, look_file, look_live, look_location, look_hard, list_skot, look_voice, look_jock, look_danestani, look_bio, look_time, look_gpt
             msg = message.message_id
             req = message.author_guid
@@ -163,11 +162,6 @@ async def main():
                 result = result.to_dict().get('join_link')
                 await client.send_message(req,f"♡**شما با موفقعیت اد شدید:white_check_mark:**♡\n\nلینک گروه\n{result}")
             if message.object_guid == my_group:
-                req = await client.get_channel_all_members("c0BeTJ40e79f2113cb16f04e2314dadc")
-                for member in req['in_chat_members']:
-                    print(member['member_guid'])
-                    if message.author_guid in member:
-                        print("ok")
                 print(message.raw_text)
                 if message.raw_text and message.raw_text.startswith("برسی"):
                     text_wbw = message.text.split(":")[-1].strip()
