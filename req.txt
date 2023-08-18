@@ -1,0 +1,6 @@
+pip uninstall httpcore
+pip install httpcore==0.13.3
+pip uninstall googletrans
+pip install googletrans==4.0.0-rc1
+pip uninstall translate
+pip install translate==3.5.0
